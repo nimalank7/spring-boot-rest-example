@@ -113,9 +113,9 @@ REST API monolith Spring application that uses a postgres database to store cust
  These endpoints are defined in the `CustomerController` class.
 
 ### How the Test works
-- The  integration test spins up the controller, service and database layer. As part of the test it uses the TestContainers 
+- The  integration test spins up the controller, service and database layer. As part of the test it uses the `TestContainers` 
 library to set up a Postgres container.
-- The ``CustomerControllerTest.Initializer`` static class overrides the application properties in ``application.yml`` so that our 
+- The `CustomerControllerTest.Initializer` overrides the application properties in `application.yml` so that our 
 application points to the Postgres container
 - Next liquibase runs the database migrations defined in the `migrations.xml` file to configure the PostgreSQL container to include a Customer table.
 - After, our tests use JDBI to connect to the Postgres container to set up test data into our Postgres container (e.g. adding and removing customers from our table) for our tests to work. 
@@ -123,13 +123,9 @@ An @AfterEach hook runs after each test to clear away the test data.
 - Rest Assured is used in the test to verify the correct behavior of the API by sending requests and checking responses against expected values.
 
 ###  How the Application works
-- The application uses SpringDoc OpenAPI to generate Swagger documentation which can be accessed at http://localhost:9000/swagger-ui.html
-- The `application.yml` file contains the app's configuration details, like Liquibase config for database and Swagger
+- SpringDoc OpenAPI is used to generate Swagger documentation which can be accessed at http://localhost:9000/swagger-ui.html
 - Liquibase reads and applies database migrations defined in `00001_create_table_customer.sql` and creates the Customer table
-- Jackson is used to serialize/deserialize JSON 
-- Hibernate is an ORM that implements JPA and uses @Entity to map onto the Customer table
-- The CustomerRepo interface extends JpaRepository<Customer, Integer>, which provides some built-in methods for database operations (e.g., save(), findById() etc) which are available to us without explicitly defining them
-- Spring uses the @Autowired annotation to do dependency injection
+- The `CustomerRepo` interface extends `JpaRepository<Customer, Integer>`, which provides some built-in methods for database operations (e.g., save(), findById() etc) which are available to us without explicitly defining them
   
  ### Database schema 
 ``` 
