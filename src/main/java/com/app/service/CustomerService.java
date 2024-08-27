@@ -1,5 +1,10 @@
-package com.app;
+package com.app.service;
 
+import com.app.dao.Customer;
+import com.app.controller.CustomerNotFoundException;
+import com.app.dao.CustomerRepo;
+import com.app.controller.NewCustomerRequest;
+import com.app.controller.CustomerController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
