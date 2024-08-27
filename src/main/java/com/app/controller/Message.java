@@ -1,4 +1,4 @@
-package com.app;
+package com.app.controller;
 
 public class Message {
     private String message;

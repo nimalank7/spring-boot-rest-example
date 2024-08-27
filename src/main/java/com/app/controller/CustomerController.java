@@ -1,5 +1,7 @@
-package com.app;
+package com.app.controller;
 
+import com.app.dao.Customer;
+import com.app.service.CustomerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
